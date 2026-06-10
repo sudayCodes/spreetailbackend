@@ -2,6 +2,10 @@ from .base import *
 
 DEBUG = False
 
+# Whitenoise serves static files without a CDN
+MIDDLEWARE.insert(1, 'whitenoise.middleware.WhiteNoiseMiddleware')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 # Supabase PostgreSQL — fill in .env when ready
 DATABASES = {
     'default': {
